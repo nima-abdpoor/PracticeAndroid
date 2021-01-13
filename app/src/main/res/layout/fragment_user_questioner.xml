@@ -1,0 +1,1077 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txt_questionnaire_title"
+        android:layout_width="67dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="25dp"
+        android:drawablePadding="5dp"
+
+        android:text="پرسشنامه"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_description_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="5dp"
+
+        android:text="شرح حال"
+        android:textColor="#C2C4C6"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_choosing_doctor_title"
+        app:layout_constraintEnd_toStartOf="@+id/txt_questionnaire_title"
+        app:layout_constraintStart_toEndOf="@+id/txt_choosing_doctor_title"
+        app:layout_constraintTop_toTopOf="@+id/txt_questionnaire_title" />
+
+    <TextView
+        android:id="@+id/txt_choosing_doctor_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="15dp"
+        android:drawablePadding="5dp"
+
+        android:text="انتخاب مشاور"
+        android:textColor="#C2C4C6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/questionnaire_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_fragmentUserQuestioner_previousPage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_questionnaire_title" />
+
+    <TextView
+        android:id="@+id/txt_fragmentUserQuestioner_nextPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="5dp"
+
+        android:text="مرحله ی بعد"
+
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/rootView"
+        app:layout_constraintStart_toStartOf="@+id/questionnaire_view" />
+
+    <TextView
+        android:id="@+id/txt_fragmentUserQuestioner_previousPage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="5dp"
+
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_fragmentUserQuestioner_nextPage"
+        app:layout_constraintEnd_toEndOf="@+id/questionnaire_view" />
+
+    <ScrollView
+        android:id="@+id/rootView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/simple_round_transparent"
+        android:layoutDirection="ltr"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_fragmentUserQuestioner_nextPage">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <TextView
+                android:id="@+id/txt_question02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="10dp"
+
+
+                android:padding="6dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="هدف از تماس"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <CheckBox
+                android:id="@+id/checkbox1_q2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:layout_marginEnd="17dp"
+                android:button="@null"
+                android:drawableEnd="@drawable/questionnaire_checkbox_selector"
+                android:drawablePadding="5dp"
+
+                android:padding="3dp"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_question02" />
+
+            <TextView
+                android:id="@+id/txt1_q2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:padding="3dp"
+                android:text="بالا رفتن سطح دانش سلامت"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@+id/checkbox1_q2"
+                app:layout_constraintTop_toTopOf="@+id/checkbox1_q2" />
+
+
+            <CheckBox
+                android:id="@+id/checkbox2_q2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:layout_marginEnd="17dp"
+                android:button="@null"
+                android:drawableEnd="@drawable/questionnaire_checkbox_selector"
+                android:drawablePadding="5dp"
+
+                android:padding="3dp"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/checkbox1_q2" />
+
+
+            <TextView
+                android:id="@+id/txt2_q2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="درخواست راهنمایی برای مراجعه به مراکز مناسب"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@+id/checkbox2_q2"
+                app:layout_constraintTop_toTopOf="@+id/checkbox2_q2" />
+
+            <CheckBox
+                android:id="@+id/checkbox3_q2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:layout_marginEnd="17dp"
+                android:button="@null"
+                android:drawableEnd="@drawable/questionnaire_checkbox_selector"
+                android:drawablePadding="5dp"
+
+                android:padding="3dp"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/checkbox2_q2" />
+
+            <TextView
+                android:id="@+id/txt3_q2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:padding="3dp"
+                android:text="داشتن یک یا چند علامت از بیماری کرونا"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@+id/checkbox3_q2"
+                app:layout_constraintTop_toTopOf="@+id/checkbox3_q2" />
+
+
+            <CheckBox
+                android:id="@+id/checkbox4_q2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:layout_marginEnd="17dp"
+                android:button="@null"
+                android:drawableEnd="@drawable/questionnaire_checkbox_selector"
+                android:drawablePadding="5dp"
+
+                android:padding="3dp"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/checkbox3_q2" />
+
+            <TextView
+                android:id="@+id/txt4_q2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:padding="3dp"
+                android:text="راهنمایی برای تهیه دارو ، مواد مصرفی و تجهیزاتی"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@+id/checkbox4_q2"
+                app:layout_constraintTop_toTopOf="@+id/checkbox4_q2" />
+
+
+            <CheckBox
+                android:id="@+id/checkbox5_q2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:layout_marginEnd="17dp"
+                android:button="@null"
+                android:drawableEnd="@drawable/questionnaire_checkbox_selector"
+                android:drawablePadding="5dp"
+
+                android:padding="3dp"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/checkbox4_q2" />
+
+            <TextView
+                android:id="@+id/txt5_q2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:padding="3dp"
+                android:text="شکایت و انتقاد از حوزه ی سلامت"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@+id/checkbox5_q2"
+                app:layout_constraintTop_toTopOf="@+id/checkbox5_q2" />
+
+
+            <CheckBox
+                android:id="@+id/checkbox6_q2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:layout_marginEnd="17dp"
+                android:button="@null"
+                android:drawableEnd="@drawable/questionnaire_checkbox_selector"
+                android:drawablePadding="5dp"
+
+                android:padding="3dp"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/checkbox5_q2" />
+
+            <TextView
+                android:id="@+id/txt6_q2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:padding="3dp"
+                android:text="پیشنهاد برای مدیریت بهتر و خدمات بهینه تر"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@+id/checkbox6_q2"
+                app:layout_constraintTop_toTopOf="@+id/checkbox6_q2" />
+
+            <CheckBox
+                android:id="@+id/checkbox7_q2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:layout_marginEnd="17dp"
+                android:button="@null"
+                android:drawableEnd="@drawable/questionnaire_checkbox_selector"
+                android:drawablePadding="5dp"
+
+                android:padding="3dp"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/checkbox6_q2" />
+
+            <TextView
+                android:id="@+id/txt7_q2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:padding="3dp"
+                android:text="هیچکدام"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@+id/checkbox7_q2"
+                app:layout_constraintTop_toTopOf="@+id/checkbox7_q2" />
+
+
+            <TextView
+                android:id="@+id/txt_question03"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="10dp"
+
+
+                android:padding="6dp"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="فوریت مسئله ی خود را مشخص کنید"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/checkbox7_q2" />
+
+
+            <RadioGroup
+                android:id="@+id/emergency_radio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+                android:layout_marginEnd="17dp"
+                android:gravity="end"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_question03">
+
+                <RadioButton
+                    android:id="@+id/not_emergency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@null"
+                    android:drawableEnd="@drawable/questionnaire_radio_selector"
+                    android:drawablePadding="5dp"
+                    android:checked="true"
+                    android:padding="3dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+
+                <RadioButton
+                    android:id="@+id/emergency"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:button="@null"
+                    android:drawableEnd="@drawable/questionnaire_radio_selector"
+                    android:drawablePadding="5dp"
+                    android:padding="3dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/txt_not_emergency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:padding="3dp"
+                android:text="از نظر من اورژانسی نیست"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@+id/emergency_radio"
+                app:layout_constraintTop_toTopOf="@+id/emergency_radio" />
+
+            <TextView
+                android:id="@+id/txt_emergency"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="17dp"
+
+                android:padding="3dp"
+                android:text="از نظر من اورژانسی است"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="@+id/txt_not_emergency"
+                app:layout_constraintTop_toBottomOf="@+id/txt_not_emergency" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/disease_signs_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txt_emergency">
+
+
+                <TextView
+                    android:id="@+id/txt_question04"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+
+
+                    android:padding="6dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="کدام یک از علائم زیر را دارا هستید ؟"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <CheckBox
+                    android:id="@+id/checkbox1_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="17dp"
+                    android:button="@null"
+                    android:drawableEnd="@drawable/questionnaire_checkbox_selector"
+                    android:drawablePadding="5dp"
+
+                    android:padding="3dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_question04" />
+
+                <TextView
+                    android:id="@+id/txt1_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:padding="3dp"
+                    android:text="تب"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toStartOf="@+id/checkbox1_q3"
+                    app:layout_constraintTop_toTopOf="@+id/checkbox1_q3" />
+
+
+                <CheckBox
+                    android:id="@+id/checkbox2_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="17dp"
+                    android:button="@null"
+                    android:drawableEnd="@drawable/questionnaire_checkbox_selector"
+                    android:drawablePadding="5dp"
+
+                    android:padding="3dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkbox1_q3" />
+
+                <TextView
+                    android:id="@+id/txt2_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:padding="3dp"
+                    android:text="لرز"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toStartOf="@+id/checkbox2_q3"
+                    app:layout_constraintTop_toTopOf="@+id/checkbox2_q3" />
+
+                <CheckBox
+                    android:id="@+id/checkbox3_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="17dp"
+                    android:button="@null"
+                    android:drawableEnd="@drawable/questionnaire_checkbox_selector"
+                    android:drawablePadding="5dp"
+
+                    android:padding="3dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkbox2_q3" />
+
+                <TextView
+                    android:id="@+id/txt3_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:padding="3dp"
+                    android:text="سر درد"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toStartOf="@+id/checkbox3_q3"
+                    app:layout_constraintTop_toTopOf="@+id/checkbox3_q3" />
+
+                <CheckBox
+                    android:id="@+id/checkbox4_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="17dp"
+                    android:button="@null"
+                    android:drawableEnd="@drawable/questionnaire_checkbox_selector"
+                    android:drawablePadding="5dp"
+
+                    android:padding="3dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkbox3_q3" />
+
+                <TextView
+                    android:id="@+id/txt4_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:padding="3dp"
+                    android:text="بدن درد"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toStartOf="@+id/checkbox4_q3"
+                    app:layout_constraintTop_toTopOf="@+id/checkbox4_q3" />
+
+                <CheckBox
+                    android:id="@+id/checkbox5_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="17dp"
+                    android:button="@null"
+                    android:drawableEnd="@drawable/questionnaire_checkbox_selector"
+                    android:drawablePadding="5dp"
+
+                    android:padding="3dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkbox4_q3" />
+
+
+                <TextView
+                    android:id="@+id/txt5_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:padding="3dp"
+                    android:text="اسهال"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toStartOf="@+id/checkbox5_q3"
+                    app:layout_constraintTop_toTopOf="@+id/checkbox5_q3" />
+
+                <CheckBox
+                    android:id="@+id/checkbox6_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="17dp"
+                    android:button="@null"
+                    android:drawableEnd="@drawable/questionnaire_checkbox_selector"
+                    android:drawablePadding="5dp"
+
+                    android:padding="3dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkbox5_q3" />
+
+
+                <TextView
+                    android:id="@+id/txt6_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:padding="3dp"
+                    android:text="استفراغ"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toStartOf="@+id/checkbox6_q3"
+                    app:layout_constraintTop_toTopOf="@+id/checkbox6_q3" />
+
+
+                <CheckBox
+                    android:id="@+id/checkbox7_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="17dp"
+                    android:button="@null"
+                    android:drawableEnd="@drawable/questionnaire_checkbox_selector"
+                    android:drawablePadding="5dp"
+
+                    android:padding="3dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkbox6_q3" />
+
+
+                <TextView
+                    android:id="@+id/txt7_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:padding="3dp"
+                    android:text="سرفه"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toStartOf="@+id/checkbox7_q3"
+                    app:layout_constraintTop_toTopOf="@+id/checkbox7_q3" />
+
+                <CheckBox
+                    android:id="@+id/checkbox8_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="17dp"
+                    android:button="@null"
+                    android:drawableEnd="@drawable/questionnaire_checkbox_selector"
+                    android:drawablePadding="5dp"
+
+                    android:padding="3dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkbox7_q3" />
+
+
+                <TextView
+                    android:id="@+id/txt8_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:padding="3dp"
+                    android:text="تنگی نفس خفیف"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toStartOf="@+id/checkbox8_q3"
+                    app:layout_constraintTop_toTopOf="@+id/checkbox8_q3" />
+
+                <CheckBox
+                    android:id="@+id/checkbox9_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="17dp"
+                    android:button="@null"
+                    android:drawableEnd="@drawable/questionnaire_checkbox_selector"
+                    android:drawablePadding="5dp"
+
+                    android:padding="3dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkbox8_q3" />
+
+
+                <TextView
+                    android:id="@+id/txt9_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:padding="3dp"
+                    android:text="تنگی نفس شدید"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toStartOf="@+id/checkbox9_q3"
+                    app:layout_constraintTop_toTopOf="@+id/checkbox9_q3" />
+
+                <CheckBox
+                    android:id="@+id/checkbox10_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="17dp"
+                    android:button="@null"
+                    android:drawableEnd="@drawable/questionnaire_checkbox_selector"
+                    android:drawablePadding="5dp"
+
+                    android:padding="3dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkbox9_q3" />
+
+
+                <TextView
+                    android:id="@+id/txt10_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:padding="3dp"
+                    android:text="کاهش حس بویایی یا چشایی"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toStartOf="@+id/checkbox10_q3"
+                    app:layout_constraintTop_toTopOf="@+id/checkbox10_q3" />
+
+                <CheckBox
+                    android:id="@+id/checkbox11_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="17dp"
+                    android:button="@null"
+                    android:drawableEnd="@drawable/questionnaire_checkbox_selector"
+                    android:drawablePadding="5dp"
+
+                    android:padding="3dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkbox10_q3" />
+
+                <TextView
+                    android:id="@+id/txt11_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:padding="3dp"
+                    android:text="عطسه"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toStartOf="@+id/checkbox11_q3"
+                    app:layout_constraintTop_toTopOf="@+id/checkbox11_q3" />
+
+                <CheckBox
+                    android:id="@+id/checkbox12_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="17dp"
+                    android:button="@null"
+                    android:drawableEnd="@drawable/questionnaire_checkbox_selector"
+                    android:drawablePadding="5dp"
+
+                    android:padding="3dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkbox11_q3" />
+
+                <TextView
+                    android:id="@+id/txt12_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:padding="3dp"
+                    android:text="خستگی"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toStartOf="@+id/checkbox12_q3"
+                    app:layout_constraintTop_toTopOf="@+id/checkbox12_q3" />
+
+                <CheckBox
+                    android:id="@+id/checkbox13_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="17dp"
+                    android:button="@null"
+                    android:drawableEnd="@drawable/questionnaire_checkbox_selector"
+                    android:drawablePadding="5dp"
+
+                    android:padding="3dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkbox12_q3" />
+
+                <TextView
+                    android:id="@+id/txt13_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:padding="3dp"
+                    android:text="ضایعات پوستی"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toStartOf="@+id/checkbox13_q3"
+                    app:layout_constraintTop_toTopOf="@+id/checkbox13_q3" />
+
+                <CheckBox
+                    android:id="@+id/checkbox14_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="17dp"
+                    android:button="@null"
+                    android:drawableEnd="@drawable/questionnaire_checkbox_selector"
+                    android:drawablePadding="5dp"
+
+                    android:padding="3dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkbox13_q3" />
+
+                <TextView
+                    android:id="@+id/txt14_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:padding="3dp"
+                    android:text="درد قفسه سینه"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toStartOf="@+id/checkbox14_q3"
+                    app:layout_constraintTop_toTopOf="@+id/checkbox14_q3" />
+
+                <CheckBox
+                    android:id="@+id/checkbox15_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="17dp"
+                    android:button="@null"
+                    android:drawableEnd="@drawable/questionnaire_checkbox_selector"
+                    android:drawablePadding="5dp"
+
+                    android:padding="3dp"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkbox14_q3" />
+
+                <TextView
+                    android:id="@+id/txt15_q3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:padding="3dp"
+                    android:text="هیچکدام"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toStartOf="@+id/checkbox15_q3"
+                    app:layout_constraintTop_toTopOf="@+id/checkbox15_q3" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/Complaining_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/disease_signs_layout">
+
+                <TextView
+                    android:id="@+id/txt_question05"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+
+
+                    android:padding="6dp"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:text="انتقاد یا شکایت شما مربوط به کدام مورد است ؟"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <CheckBox
+                    android:id="@+id/checkbox1_q4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="17dp"
+                    android:button="@null"
+                    android:drawableEnd="@drawable/questionnaire_checkbox_selector"
+                    android:drawablePadding="5dp"
+
+                    android:padding="3dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/txt_question05" />
+
+                <TextView
+                    android:id="@+id/txt1_q4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:padding="3dp"
+                    android:text="در دسترس نبودن تخت"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toStartOf="@+id/checkbox1_q4"
+                    app:layout_constraintTop_toTopOf="@+id/checkbox1_q4" />
+
+                <CheckBox
+                    android:id="@+id/checkbox2_q4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="17dp"
+                    android:button="@null"
+                    android:drawableEnd="@drawable/questionnaire_checkbox_selector"
+                    android:drawablePadding="5dp"
+
+                    android:padding="3dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkbox1_q4" />
+
+
+                <TextView
+                    android:id="@+id/txt2_q4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:padding="3dp"
+                    android:text="در دسترس نبودن دارو و تجهیزات مصرفی"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toStartOf="@+id/checkbox2_q4"
+                    app:layout_constraintTop_toTopOf="@+id/checkbox2_q4" />
+
+                <CheckBox
+                    android:id="@+id/checkbox3_q4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="17dp"
+                    android:button="@null"
+                    android:drawableEnd="@drawable/questionnaire_checkbox_selector"
+                    android:drawablePadding="5dp"
+
+                    android:padding="3dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkbox2_q4" />
+
+
+                <TextView
+                    android:id="@+id/txt3_q4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:padding="3dp"
+                    android:text="در دسترس نبودن متخصص یا کارشناس ذیصلاح"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toStartOf="@+id/checkbox3_q4"
+                    app:layout_constraintTop_toTopOf="@+id/checkbox3_q4" />
+
+                <CheckBox
+                    android:id="@+id/checkbox4_q4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="17dp"
+                    android:button="@null"
+                    android:drawableEnd="@drawable/questionnaire_checkbox_selector"
+                    android:drawablePadding="5dp"
+
+                    android:padding="3dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkbox3_q4" />
+
+
+                <TextView
+                    android:id="@+id/txt4_q4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:padding="3dp"
+                    android:text="در دسترس نبودن مراکز تشخیصی (آزمایشگاهی و ...)"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toStartOf="@+id/checkbox4_q4"
+                    app:layout_constraintTop_toTopOf="@+id/checkbox4_q4" />
+
+                <CheckBox
+                    android:id="@+id/checkbox5_q4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="17dp"
+                    android:button="@null"
+                    android:drawableEnd="@drawable/questionnaire_checkbox_selector"
+                    android:drawablePadding="5dp"
+
+                    android:padding="3dp"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkbox4_q4" />
+
+
+                <TextView
+                    android:id="@+id/txt5_q4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:padding="3dp"
+                    android:text="عدم پاسخگویی مناسب"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toStartOf="@+id/checkbox5_q4"
+                    app:layout_constraintTop_toTopOf="@+id/checkbox5_q4" />
+
+                <CheckBox
+                    android:id="@+id/checkbox6_q4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginEnd="17dp"
+                    android:button="@null"
+                    android:drawableEnd="@drawable/questionnaire_checkbox_selector"
+                    android:drawablePadding="5dp"
+
+                    android:padding="3dp"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/checkbox5_q4" />
+
+                <TextView
+                    android:id="@+id/txt6_q4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:padding="3dp"
+                    android:text="هیچکدام"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    app:layout_constraintEnd_toStartOf="@+id/checkbox6_q4"
+                    app:layout_constraintTop_toTopOf="@+id/checkbox6_q4" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <Button
+                android:background="@drawable/bg_questionnaire_sumbit"
+                android:id="@+id/btn_fragmentUserQuestioner_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:paddingStart="30dp"
+                android:paddingEnd="30dp"
+                android:text="تایید"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/Complaining_layout" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

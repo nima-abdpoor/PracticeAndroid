@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_host_fragment"
+    app:startDestination="@+id/userQuestionnaireFragment">
+
+
+    <fragment
+        android:id="@+id/userQuestionnaireFragment"
+        android:name="com.nima.practice.UserQuestionerFragment"
+        android:label="UserQuestionnaireFragment"
+        tools:layout="@layout/fragment_user_questioner">
+        <action
+            android:id="@+id/action_userQuestionnaireFragment_to_userDescriptionFragment"
+            app:destination="@id/userDescriptionFragment"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_left"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_right"
+            />
+    </fragment>
+
+    <fragment
+        android:id="@+id/userDescriptionFragment"
+        android:name="com.nima.practice.UserDescriptionFragment"
+        android:label="UserDescriptionFragment"
+        tools:layout="@layout/fragment_user_description">
+    </fragment>
+
+
+
+</navigation>

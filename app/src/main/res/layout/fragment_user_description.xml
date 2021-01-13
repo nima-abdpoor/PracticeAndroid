@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:padding="20dp"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txt_questionnaire_title"
+        android:layout_width="67dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="25dp"
+        android:textSize="12sp"
+        android:drawablePadding="5dp"
+
+        android:text="پرسشنامه"
+        android:textColor="#C2C4C6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_description_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="5dp"
+        android:textSize="12sp"
+        android:text="شرح حال"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_choosing_doctor_title"
+        app:layout_constraintEnd_toStartOf="@+id/txt_questionnaire_title"
+        app:layout_constraintStart_toEndOf="@+id/txt_choosing_doctor_title"
+        app:layout_constraintTop_toTopOf="@+id/txt_questionnaire_title" />
+
+    <TextView
+        android:id="@+id/txt_choosing_doctor_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="15dp"
+        android:drawablePadding="5dp"
+        android:textSize="12sp"
+        android:text="انتخاب مشاور"
+        android:textColor="#C2C4C6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/questionnaire_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/txt_previous_page_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_questionnaire_title" />
+
+    <TextView
+        android:id="@+id/txt_next_page_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:drawableStart="@drawable/ic_previous_page"
+        android:drawablePadding="5dp"
+        android:text="مرحله ی بعد"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_previous_page_description"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="123dp" />
+
+    <TextView
+        android:id="@+id/txt_previous_page_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:drawablePadding="5dp"
+        android:layout_marginEnd="5dp"
+        android:text="مرحله قبل"
+        android:drawableEnd="@drawable/ic_previous_page"
+        android:textColor="@color/black"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/txt_next_page_description" />
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/bg_description_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@+id/btn_submit_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_previous_page_description"
+        app:layout_constraintVertical_bias="0.0">
+
+        <TextView
+            android:id="@+id/textCounter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="18dp"
+            android:text="500 کاراکتر"
+            android:textColor="#A4A6AA"
+            android:textSize="13sp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.nima.practice.LineEditText
+            android:id="@+id/etDescription"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="5dp"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:paddingBottom="10dp"
+            android:background="@drawable/bg_description_text"
+            android:gravity="top|right"
+            android:hint="  مشکل خود را شرح دهید"
+            android:lineSpacingExtra="7dp"
+            android:maxLength="500"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColorHint="#A4A6AA"
+            android:textDirection="rtl"
+            android:textSize="15sp"
+            android:typeface="serif"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textCounter" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <Button
+        android:id="@+id/btn_submit_description"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bg_questionnaire_sumbit"
+        android:gravity="center"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:text="تایید"
+        android:textSize="13sp"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_layout"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
