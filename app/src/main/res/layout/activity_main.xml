@@ -1,29 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:mapbox="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
+    <TextView
+        android:id="@+id/textView22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="موقعیت خود را انتخاب کنید"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/img_choseLocationF_popStack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView22"
+        app:layout_constraintEnd_toStartOf="@+id/textView22"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView22"
+        android:contentDescription="TODO" />
     <FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:mapbox="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/mapViewChose2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <com.mapbox.mapboxsdk.maps.MapView
-            android:id="@+id/mapview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            mapbox:mapbox_cameraBearing="34.33"
-            mapbox:mapbox_cameraTilt="50.25"
-            mapbox:mapbox_cameraZoomMax="12.41"
-            mapbox:mapbox_cameraZoomMin="6"
-            mapbox:mapbox_uiRotateGestures="false"
-            />
-
+        android:layout_height="0dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintVertical_weight="7"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/back_map"
+        app:layout_constraintBottom_toTopOf="@+id/appCompatSpinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView22">
+<com.mapbox.mapboxsdk.maps.MapView
+    android:id="@+id/mapViewChose"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"/>
     </FrameLayout>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_choseLocation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/mapViewChose2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_location_agin"
+        android:contentDescription="TODO" />
+    <Button
+        android:id="@+id/btn_choseLocationF_seeBasig"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintVertical_weight="1.5"
+        android:layout_marginBottom="16dp"
+        android:text="دیدن پایگاه ها"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/btn_choseLcationF_writeReques"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_choseLcationF_writeReques" />
+
+    <Button
+        android:id="@+id/btn_choseLcationF_writeReques"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+
+        android:layout_marginTop="28dp"
+        app:layout_constraintVertical_weight="1"
+        android:text="فرم درخواست را پر کنید"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/btn_choseLocationF_seeBasig"
+        app:layout_constraintEnd_toEndOf="@+id/appCompatSpinner"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/appCompatSpinner"
+        app:layout_constraintTop_toBottomOf="@+id/appCompatSpinner" />
+
+    <Button
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_choseLcationF_writeReques"
+        app:layout_constraintEnd_toEndOf="@+id/btn_choseLcationF_writeReques"
+        app:layout_constraintTop_toTopOf="@+id/btn_choseLcationF_writeReques" />
+
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        android:id="@+id/appCompatSpinner"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintVertical_weight="1"
+        app:layout_constraintBottom_toTopOf="@+id/btn_choseLcationF_writeReques"
+        app:layout_constraintTop_toBottomOf="@+id/mapViewChose2"
+        app:layout_constraintVertical_bias="0.0"
+        tools:layout_editor_absoluteX="-12dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="مکان های مورد نظر"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/appCompatSpinner"
+        app:layout_constraintEnd_toEndOf="@+id/appCompatSpinner"
+        app:layout_constraintHorizontal_bias="0.41"
+        app:layout_constraintStart_toEndOf="@+id/view7"
+        app:layout_constraintTop_toTopOf="@+id/appCompatSpinner" />
+
+    <View
+        android:id="@+id/view7"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/appCompatSpinner"
+        app:layout_constraintEnd_toEndOf="@+id/appCompatSpinner"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/appCompatSpinner"
+        app:layout_constraintTop_toTopOf="@+id/appCompatSpinner" />
+
+    <View
+        android:id="@+id/view5"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="12dp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/btn_choseLcationF_writeReques"
+        app:layout_constraintEnd_toEndOf="@+id/btn_choseLcationF_writeReques"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/btn_choseLcationF_writeReques"
+        app:layout_constraintTop_toTopOf="@+id/btn_choseLcationF_writeReques" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
