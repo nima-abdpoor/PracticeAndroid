@@ -52,10 +52,10 @@ dependencies {
 
 
 
-    implementation 'ir.map:map-sdk:4.0.2'
+
     implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.2.0'
 //    implementation 'com.mapbox.mapboxsdk:mapbox-android-pligin-location:0.5.0'
 
-//    implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-markerview-v9:0.4.0'
-//    implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
+    implementation 'com.mapbox.mapboxsdk:mapbox-android-plugin-markerview-v9:0.4.0'
+    implementation 'androidx.localbroadcastmanager:localbroadcastmanager:1.0.0'
 }
