@@ -1,197 +1,314 @@
 package com.nima.practice
 
-import android.Manifest
-import android.annotation.SuppressLint
-import android.content.pm.PackageManager
-import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.location.LocationManager
 import android.os.Bundle
-import android.view.ViewGroup
-import android.widget.ImageView
+import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.app.ActivityCompat
-import com.mapbox.android.core.permissions.PermissionsListener
-import com.mapbox.android.core.permissions.PermissionsManager
 import com.mapbox.geojson.Feature
 import com.mapbox.geojson.FeatureCollection
 import com.mapbox.geojson.Point
+import com.mapbox.mapboxsdk.Mapbox
 import com.mapbox.mapboxsdk.camera.CameraPosition
 import com.mapbox.mapboxsdk.camera.CameraUpdateFactory
-import com.mapbox.mapboxsdk.geometry.LatLng
-import com.mapbox.mapboxsdk.location.LocationComponentActivationOptions
-import com.mapbox.mapboxsdk.location.modes.CameraMode
-import com.mapbox.mapboxsdk.location.modes.RenderMode
 import com.mapbox.mapboxsdk.maps.MapView
 import com.mapbox.mapboxsdk.maps.MapboxMap
 import com.mapbox.mapboxsdk.maps.OnMapReadyCallback
 import com.mapbox.mapboxsdk.maps.Style
-import com.mapbox.mapboxsdk.plugins.markerview.MarkerView
-import com.mapbox.mapboxsdk.plugins.markerview.MarkerViewManager
-import com.mapbox.mapboxsdk.style.layers.Layer
-import com.mapbox.mapboxsdk.style.layers.PropertyFactory.*
+import com.mapbox.mapboxsdk.style.expressions.Expression
+import com.mapbox.mapboxsdk.style.layers.CircleLayer
+import com.mapbox.mapboxsdk.style.layers.PropertyFactory
 import com.mapbox.mapboxsdk.style.layers.SymbolLayer
 import com.mapbox.mapboxsdk.style.sources.GeoJsonSource
-import kotlinx.android.synthetic.main.activity_main.*
+import com.mapbox.mapboxsdk.utils.BitmapUtils
 
 
-class MainActivity : AppCompatActivity(), OnMapReadyCallback , PermissionsListener {
-    var locationlan = 35.678494
-    var locationlong = 51.390880
-
-    private val SOURCE_ID = "SOURCE_ID"
-    private val ICON_ID = "ICON_ID"
-    private val LAYER_ID = "LAYER_ID"
-    private lateinit var manager: LocationManager
+class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     private var mapView: MapView? = null
-    private val DROPPED_MARKER_LAYER_ID = "DROPPED_MARKER_LAYER_ID"
-    private var mapboxMap: MapboxMap? = null
-    private var hoveringMarker: ImageView? = null
-    private var view : ImageView? = null
-    private lateinit var markerViewManager : MarkerViewManager
-    private var permissionsManager: PermissionsManager? = null
-    private var droppedMarkerLayer: Layer? = null
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val loc= LocationManager(this)
+        if (loc.canGetLocation()){
+            val location = loc.getLocation()
+            Log.i("MainActivity", "onCreate: lat : ${location?.latitude} log : ${location?.longitude}")
+            Toast.makeText(this,"lat : ${location?.latitude} log : ${location?.longitude}",Toast.LENGTH_LONG).show()
+        }else{
+            Toast.makeText(this,"cant get the location",Toast.LENGTH_SHORT).show()
+        }
+
+        // Mapbox access token is configured here. This needs to be called either in your application
+        // object or in the same activity which contains the mapView?.
+        Mapbox.getInstance(this, getString(R.string.mapBox_token))
+
+        // This contains the MapView in XML and needs to be called after the access token is configured.
         setContentView(R.layout.activity_main)
-        manager = applicationContext.getSystemService(LOCATION_SERVICE) as LocationManager
         mapView = findViewById(R.id.mapView)
-        view = findViewById(R.id.imageView)
         mapView?.onCreate(savedInstanceState)
         mapView?.getMapAsync(this)
-        mapView?.removeView(view)
-    }
-    @SuppressLint("UseCompatLoadingForDrawables")
-    private fun bases(){
-        val point = LatLng(35.678494, 51.390880)
-        val point2 = LatLng(35.678494, 51.390880)
-        val point3 = LatLng(35.678494, 51.390880)
-        val point4 = LatLng(35.678494, 51.390880)
-        val list = ArrayList<LatLng>()
-        list.add(point)
-        list.add(point2)
-        list.add(point3)
-        list.add(point4)
-        val icon = BitmapFactory.decodeResource(
-            resources, R.drawable.mapbox_marker_icon_default
-        )
-
-        view?.setImageBitmap(icon)
-        btn_choseLocationF_seeBasig.setOnClickListener {
-            if (view?.parent != null) {
-                (view?.parent as ViewGroup).removeView(view)
-            }
-            mark(list)
-        }
-    }
-
-    private fun mark(list: java.util.ArrayList<LatLng>) {
-        for (l in list){
-            if (view?.parent != null) {
-                (view?.parent as ViewGroup).removeView(view)
-            }
-            markerViewManager = MarkerViewManager(mapView, mapboxMap)
-            mapView?.getMapAsync { mapboxMap ->
-                view?.let {
-                    val marker = MarkerView(l, it)
-                    markerViewManager.addMarker(marker)
-                }
-            }
-        }
-
     }
 
     override fun onMapReady(mapboxMap: MapboxMap) {
-        val lat = LatLng()
-        this.mapboxMap = mapboxMap
-        bases()
-
-        create()
-        val point1 = LatLng(35.678494, 51.390880)
-        val point2 = LatLng(36.678494, 52.390880)
-        val list = ArrayList<LatLng>()
-        list.add(point1)
-        list.add(point2)
-    }
-
-    private fun create() {
-        val symbolLayerIconFeatureList: MutableList<Feature> = ArrayList()
-        symbolLayerIconFeatureList.add(
-            Feature.fromGeometry(
-                Point.fromLngLat(36.00, 52.00)
-            )
-        )
-        symbolLayerIconFeatureList.add(
-            Feature.fromGeometry(
-                Point.fromLngLat(37.00, 51.390855)
-            )
-        )
-        symbolLayerIconFeatureList.add(
-            Feature.fromGeometry(
-                Point.fromLngLat(35.678494, 51.3999)
-            )
-        )
-        mapboxMap?.setStyle(
-            Style.Builder().fromUri("mapbox://styles/mapbox/cjf4m44iw0uza2spb3q0a7s41")
+        mapboxMap.setStyle(
+            Style.Builder()
+                .fromUri("mapbox://styles/mapbox/streets-v10") // Add images to the map so that the SymbolLayers can reference the images.
                 .withImage(
-                    ICON_ID,
-                    BitmapFactory.decodeResource(resources, R.drawable.mapbox_logo_icon)
-                )
+                    ICON_IMAGE_ID, BitmapUtils.getBitmapFromDrawable(
+                        resources.getDrawable(R.drawable.ic_location_marker)
+                    )!!
+                ) // Add GeoJSON data to the GeoJsonSource and then add the GeoJsonSource to the map
                 .withSource(
                     GeoJsonSource(
                         SOURCE_ID,
-                        FeatureCollection.fromFeatures(symbolLayerIconFeatureList)
+                        FeatureCollection.fromFeatures(initFeatureArray())
                     )
-                ) // Adding the actual SymbolLayer to the map style. An offset is added that the bottom of the red
-                // marker icon gets fixed to the coordinate, rather than the middle of the icon being fixed to
-                // the coordinate point. This is offset is not always needed and is dependent on the image
-                // that you use for the SymbolLayer icon.
-                .withLayer(
-                    SymbolLayer(LAYER_ID, SOURCE_ID)
-                        .withProperties(
-                            iconImage(ICON_ID),
-                            iconAllowOverlap(true),
-                            iconIgnorePlacement(true)
-                        )
                 )
-        ) { style ->
-            enableCurrentLocation(style)
-
-            //remove logo
-            mapboxMap?.uiSettings?.isAttributionEnabled = false;
-            mapboxMap?.uiSettings?.isLogoEnabled = false;
-
-            //change my marker drawable
-            hoveringMarker = ImageView(this)
-            hoveringMarker?.setBackgroundResource(R.drawable.ic_placeholder)
-
-
-            fab_choseLocation.setOnClickListener {
-
-
-                //if gps Not Active
-                if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-
-                } else {
-                    enableCurrentLocation(style)
-                    //route current location
-                    val position = CameraPosition.Builder()
-                        .target(LatLng(locationlan, locationlong))
-                        .zoom(17.0)
-//                    .bearing(180.0)
-                        .tilt(30.0)
-                        .build()
-
-                    //camera update
-                    mapboxMap?.animateCamera(
-                        CameraUpdateFactory
-                            .newCameraPosition(position), 7000
+        ) { style -> // Add the base CircleLayer, which will show small circles when the map is zoomed far enough
+            // away from the map.
+            initCircleSource(style)
+            initCircleLayer(style)
+            val baseCircleLayer = CircleLayer(
+                BASE_CIRCLE_LAYER_ID,
+                SOURCE_ID
+            ).withProperties(
+                PropertyFactory.circleColor(
+                    Color.parseColor(
+                        BASE_CIRCLE_COLOR
                     )
-                }
-            }
-            // Map is set up and the style has loaded. Now you can add additional data or make other map adjustments.
+                ),
+                PropertyFactory.circleRadius(
+                    Expression.interpolate(
+                        Expression.linear(),
+                        Expression.zoom(),
+                        Expression.stop(
+                            ZOOM_LEVEL_FOR_START_OF_BASE_CIRCLE_EXPANSION,
+                            BASE_CIRCLE_INITIAL_RADIUS
+                        ),
+                        Expression.stop(
+                            ZOOM_LEVEL_FOR_SWITCH_FROM_CIRCLE_TO_ICON,
+                            RADIUS_WHEN_CIRCLES_MATCH_ICON_RADIUS
+                        )
+                    )
+                )
+            )
+            style.addLayer(baseCircleLayer)
+
+            // Add a "shading" CircleLayer, whose circles' radii will match the radius of the SymbolLayer
+            // circular icon
+            val shadowTransitionCircleLayer = CircleLayer(
+                SHADOW_CIRCLE_LAYER_ID,
+                SOURCE_ID
+            )
+                .withProperties(
+                    PropertyFactory.circleColor(
+                        Color.parseColor(
+                            SHADING_CIRCLE_COLOR
+                        )
+                    ),
+                    PropertyFactory.circleRadius(RADIUS_WHEN_CIRCLES_MATCH_ICON_RADIUS),
+                    PropertyFactory.circleOpacity(
+                        Expression.interpolate(
+                            Expression.linear(),
+                            Expression.zoom(),
+                            Expression.stop(
+                                ZOOM_LEVEL_FOR_START_OF_BASE_CIRCLE_EXPANSION - .5,
+                                0
+                            ),
+                            Expression.stop(
+                                ZOOM_LEVEL_FOR_START_OF_BASE_CIRCLE_EXPANSION,
+                                FINAL_OPACITY_OF_SHADING_CIRCLE
+                            )
+                        )
+                    )
+                )
+            style.addLayerBelow(
+                shadowTransitionCircleLayer,
+                BASE_CIRCLE_LAYER_ID
+            )
+
+            // Add the SymbolLayer
+            val symbolIconLayer = SymbolLayer(
+                ICON_LAYER_ID,
+                SOURCE_ID
+            )
+            symbolIconLayer.withProperties(
+                PropertyFactory.iconImage(ICON_IMAGE_ID),
+                PropertyFactory.iconSize(1.5f),
+                PropertyFactory.iconIgnorePlacement(true),
+                PropertyFactory.iconAllowOverlap(true)
+            )
+            symbolIconLayer.minZoom =
+                ZOOM_LEVEL_FOR_SWITCH_FROM_CIRCLE_TO_ICON
+            style.addLayer(symbolIconLayer)
+            mapboxMap.animateCamera(
+                CameraUpdateFactory
+                    .newCameraPosition(
+                        CameraPosition.Builder()
+                            .zoom(12.5)
+                            .build()
+                    ), 3000
+            )
         }
+    }
+
+    private fun initCircleSource(loadedMapStyle: Style) {
+        loadedMapStyle.addSource(
+            GeoJsonSource(
+                SOURCE_ID_1, FeatureCollection.fromFeatures(initFeature())
+            )
+        )
+    }
+
+    private fun initCircleLayer(loadedMapStyle: Style) {
+        loadedMapStyle.addImage(
+            "pre-define-icon-image",
+            resources.getDrawable(R.drawable.ic_location_nearest)
+        )
+        loadedMapStyle.addSource(GeoJsonSource("circle-layer-bounds-corner-id"))
+        loadedMapStyle.addLayer(
+            SymbolLayer(
+                "circle-layer-bounds-corner-id",
+                SOURCE_ID_1
+            ).withProperties(
+                PropertyFactory.iconImage("pre-define-icon-image")
+            )
+        )
+    }
+
+    private fun initFeature(): Array<Feature> {
+        return arrayOf(
+            Feature.fromGeometry(
+                Point.fromLngLat(
+                    135.516316,
+                    34.681345
+                )
+            )
+        )
+    }
+
+    private fun initFeatureArray(): Array<Feature> {
+        return arrayOf(
+            Feature.fromGeometry(
+                Point.fromLngLat(
+                    135.509537,
+                    34.707929
+                )
+//            ),
+//            Feature.fromGeometry(
+//                Point.fromLngLat(
+//                    135.487953,
+//                    34.680369
+//                )
+//            ),
+//            Feature.fromGeometry(
+//                Point.fromLngLat(
+//                    135.479682,
+//                    34.698283
+//                )
+//            ),
+//            Feature.fromGeometry(
+//                Point.fromLngLat(
+//                    135.499368,
+//                    34.708894
+//                )
+//            ),
+//            Feature.fromGeometry(
+//                Point.fromLngLat(
+//                    135.469701,
+//                    34.691089
+//                )
+//            ),
+//            Feature.fromGeometry(
+//                Point.fromLngLat(
+//                    135.471265,
+//                    34.672435
+//                )
+//            ),
+//            Feature.fromGeometry(
+//                Point.fromLngLat(
+//                    135.485418,
+//                    34.704285
+//                )
+//            ),
+//            Feature.fromGeometry(
+//                Point.fromLngLat(
+//                    135.493762,
+//                    34.669337
+//                )
+//            ),
+//            Feature.fromGeometry(
+//                Point.fromLngLat(
+//                    135.509407,
+//                    34.696032
+//                )
+//            ),
+//            Feature.fromGeometry(
+//                Point.fromLngLat(
+//                    135.492719,
+//                    34.68424
+//                )
+//            ),
+//            Feature.fromGeometry(
+//                Point.fromLngLat(
+//                    135.51045,
+//                    34.684133
+//                )
+//            ),
+//            Feature.fromGeometry(
+//                Point.fromLngLat(
+//                    135.500802,
+//                    34.700212
+//                )
+//            ),
+//            Feature.fromGeometry(
+//                Point.fromLngLat(
+//                    135.519576,
+//                    34.698712
+//                )
+//            ),
+//            Feature.fromGeometry(
+//                Point.fromLngLat(
+//                    135.502888,
+//                    34.67888
+//                )
+//            ),
+//            Feature.fromGeometry(
+//                Point.fromLngLat(
+//                    135.518533,
+//                    34.67116
+//                )
+            )
+        )
+    }
+
+    public override fun onStart() {
+        super.onStart()
+        mapView?.onStart()
+    }
+
+    public override fun onResume() {
+        super.onResume()
+        mapView?.onResume()
+    }
+
+    public override fun onPause() {
+        super.onPause()
+        mapView?.onPause()
+    }
+
+    public override fun onStop() {
+        super.onStop()
+        mapView?.onStop()
+    }
+
+    override fun onLowMemory() {
+        super.onLowMemory()
+        mapView?.onLowMemory()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mapView?.onDestroy()
     }
 
     override fun onSaveInstanceState(outState: Bundle) {
@@ -199,72 +316,19 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback , PermissionsListen
         mapView?.onSaveInstanceState(outState)
     }
 
-    override fun onExplanationNeeded(permissionsToExplain: MutableList<String>?) {
-
+    companion object {
+        private const val BASE_CIRCLE_INITIAL_RADIUS = 3.4f
+        private const val RADIUS_WHEN_CIRCLES_MATCH_ICON_RADIUS = 14f
+        private const val ZOOM_LEVEL_FOR_START_OF_BASE_CIRCLE_EXPANSION = 11f
+        private const val ZOOM_LEVEL_FOR_SWITCH_FROM_CIRCLE_TO_ICON = 12f
+        private const val FINAL_OPACITY_OF_SHADING_CIRCLE = .5f
+        private const val BASE_CIRCLE_COLOR = "#3BC802"
+        private const val SHADING_CIRCLE_COLOR = "#858585"
+        private const val SOURCE_ID = "SOURCE_ID"
+        private const val SOURCE_ID_1 = "SOURCE_ID_1"
+        private const val ICON_LAYER_ID = "ICON_LAYER_ID"
+        private const val BASE_CIRCLE_LAYER_ID = "BASE_CIRCLE_LAYER_ID"
+        private const val SHADOW_CIRCLE_LAYER_ID = "SHADOW_CIRCLE_LAYER_ID"
+        private const val ICON_IMAGE_ID = "ICON_ID"
     }
-
-    override fun onPermissionResult(granted: Boolean) {
-        if (granted && mapboxMap != null) {
-            val style = mapboxMap?.style
-            style?.let {
-                enableCurrentLocation(it)
-            }
-        } else {
-
-        }
-    }
-    private fun enableCurrentLocation(loadedMapStyle: Style) {
-        if (PermissionsManager.areLocationPermissionsGranted(this)) {
-            val locationComponent = mapboxMap?.locationComponent
-            //active current location
-            val locationActive =
-                LocationComponentActivationOptions.builder(this, loadedMapStyle).build()
-            locationComponent?.activateLocationComponent(locationActive)
-
-            //active Permission location
-            if (ActivityCompat.checkSelfPermission(
-                    this,
-                    Manifest.permission.ACCESS_FINE_LOCATION
-                ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
-                    this,
-                    Manifest.permission.ACCESS_COARSE_LOCATION
-                ) != PackageManager.PERMISSION_GRANTED
-            ) {
-
-                return
-            }
-            locationComponent?.isLocationComponentEnabled = true
-
-            //active camera location
-            locationComponent?.cameraMode = CameraMode.TRACKING
-            locationComponent?.renderMode = RenderMode.NORMAL
-            if (BuildConfig.DEBUG && locationComponent?.lastKnownLocation == null) {
-                error("Assertion failed")
-            }
-
-
-            //if gps Not Active
-            if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-
-            } else {
-                locationlan = locationComponent?.lastKnownLocation?.latitude ?: 35.678494
-                locationlong = locationComponent?.lastKnownLocation?.longitude ?: 51.390880
-            }
-
-        } else {
-            permissionsManager = PermissionsManager(this)
-            permissionsManager?.requestLocationPermissions(this)
-        }
-    }
-
-
-    override fun onDestroy() {
-        super.onDestroy()
-        markerViewManager?.onDestroy()
-        mapView?.apply {
-            onDestroy()
-        }
-    }
-
-
 }
